@@ -64,43 +64,88 @@ const newFilter = (arr, callback) => {
 }
 
 
-function loop (arrRecebe, arrPushado) {
-   for (let i = 0; i < arrPushado.length; i++) {
-      arrRecebe.push(arrPushado[i])
+
+const newConcat = (...arguments) => {
+   let arrReturn = [];
+   for (let i = 0; i < arguments.length; i++) {
+      if (Array.isArray(arguments[i])) {
+         for (let j = 0; j < arguments[i].length; j++) {
+            arrReturn.push(arguments[i][j]);
+         }
+      } else {
+         arrReturn.push(arguments[i]);
+      }
    }
 
-}
-const newConcat = (arr1, arr2) => {
-   let arrReturn = [];
-   loop(arrReturn, arr1);
-   loop(arrReturn, arr2);
    return arrReturn;
 }
 
-const newIncludes = () => {
+const newIncludes = (arr, element) => {
+   for (let i = 0; i < arr.length; i++) {
+      if (arr[i] === element) {
+         return true;
+      }
+   }
 
+   return false;
 }
 
-const newIndexOf = () => {
+const newIndexOf = (arr, element, index = 0) => {
+   for(let i = index; i < arr.length; i++) {
+      if (arr[i] === element) {
+         return i;
+      }
+   }
 
+   return -1;
 }
 
-const newJoin = () => {
+const newJoin = (arr, separator = '') => {
+   let strReturn = '';
+   for(let i = 0; i < arr.length; i++) {
+      if(i === 0) {
+         strReturn += arr[i].toString();
+      } else {
+         strReturn += separator + arr[i].toString();
+      }
+   }
 
+   return strReturn;
 }
 
-const newSlice = () => {
+const newSlice = (arr, start, finish = (arr.length - 1)) => {
+   let arrReturn = []
+   for (let i = start; i < finish; i++) {
+      arrReturn.push(arr[i])      
+   }
 
+   return arrReturn;
 }
 
-const newFlat = () => {
+const newFlat = (arr) => {
+   let arrReturn = [];
+   for (let i = 0; i < arr.length; i++) {
+      if (arr[i].isArray()) {
+         for (let j = 0; j < arr[i].length; j++) {
+            arrReturn.push(arr[i][j]);
+         }
+      }
 
+      arrReturn.push(arr[i]);
+   }
+
+   return arrReturn;
 }
 
 const newFlatMap = () => {
 
 }
 
-const newArrayOf = () => {
+const newArrayOf = (...arguments) => {
+   let arrReturn = [];
+   for (let i = 0; i < arguments.length; i++) {
+      arrReturn.push(arguments[i]);
+   }
 
+   return arrReturn;
 }

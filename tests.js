@@ -48,12 +48,20 @@ function testOdds(element) {
    }
 }
 
-/* =========== DÚVIDA NESTE TESTE =================== */
-// console.assert(arrTest.filter(testOdds) === newFilter(arrTest, testOdds), `Apresenta erro!`);
-// console.log(arrTest.filter(testOdds), newFilter(arrTest, testOdds));
+
+console.assert(JSON.stringify(arrTest.filter(testOdds)) === JSON.stringify(newFilter(arrTest, testOdds)), `Apresenta erro!`);
 
 
-// let arr90 = [1, 2, 4, 4, 5];
-// let arr91 = [9, 8, 7, 6, 5, 5];
+let arr90 = [1, 2, 4, 4, 5];
+let arr91 = [9, 8, 7, 6, 5, 5];
 
-// console.log(newConcat(arr90, arr91));
+console.assert(JSON.stringify(newConcat(arr90, arr91, 'abc', {a: 1, b: 2})) === JSON.stringify(arr90.concat(arr91, 'abc', {a: 1, b: 2})), `Apresenta erro!`);
+
+
+console.assert(arr90.includes(9) === newIncludes(arr90, 9), `Apresenta erro!`);
+
+
+console.log(newJoin(arr90, ' '));
+
+console.assert(JSON.stringify(arr91.slice(2, 4)) === JSON.stringify(newSlice(arr91, 2, 4)), `Apresenta erro!`);
+
